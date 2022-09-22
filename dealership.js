@@ -29,6 +29,15 @@ class Dealership {
             }
         };
         this.getTotalStockValue = () => _stock.reduce((acc, car) => acc += car.getPrice(), 0);
+
+        this.sellCar = (customer, car) => {
+            if (customer.getWallet() >= car.getPrice()) {
+                customer.setWallet(customer.getWallet() - car.getPrice());
+                const carIndex = this.getStock().indexOf(car);
+                return this.getStock().splice(carIndex, 1)[0];
+            }
+            return null;
+        }
     }
 }
 
