@@ -43,6 +43,15 @@ describe('Testing dealership methods', () => {
         expect(dealership.getCapacity()).toBe(40);
     })
 
+    test('Can get stock', () => {
+        expect(dealership.getStock().length).toBe(4);
+    })
+
+    test('Can set stock', () => {
+        dealership.setStock([car6]);
+        expect(dealership.getStock().length).toBe(1);
+    })
+
     test('Can get stock count', () => {
         expect(dealership.getStockCount()).toBe(4);
     })
@@ -50,6 +59,32 @@ describe('Testing dealership methods', () => {
     test('Can add car to stock', () => {
         dealership.addCarToStock(car5);
         expect(dealership.getStockCount()).toBe(5);
+    })
+
+    test('Cannot add car to stock when it is full', () => {
+        dealership.setCapacity(4);
+        dealership.addCarToStock(car5);
+        expect(dealership.getStockCount()).toBe(4);
+    })
+
+    test('Can get manufacturers', () => {
+        expect(dealership.getManufacturers().length).toBe(4);
+    })
+
+    test('Can get cars by price', () => {
+        expect(dealership.getCarsByCharacteristic('price', 500000).length).toBe(2);
+    })
+
+    test('Can get cars by manufacturer', () => {
+        expect(dealership.getCarsByCharacteristic('manufacturer', 'Ferrari').length).toBe(1);
+    })
+
+    test('Can get cars by engine', () => {
+        expect(dealership.getCarsByCharacteristic('engine', 'V12').length).toBe(2);
+    })
+
+    test('Can get total stock value', () => {
+        expect(dealership.getTotalStockValue()).toBe(1500000);
     })
 
 })

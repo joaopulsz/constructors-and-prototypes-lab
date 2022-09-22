@@ -18,7 +18,7 @@ class Dealership {
                 _stock.push(car);
             }
         }
-        this.getManufacturers = () => _stock.map(getManufacturer());
+        this.getManufacturers = () => _stock.map(car => car.getManufacturer());
         this.getCarsByCharacteristic = (characteristic, value) => {
             if (characteristic.toLowerCase() === 'manufacturer') {
                 return _stock.filter(car => car.getManufacturer() === value);
