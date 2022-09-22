@@ -1,8 +1,6 @@
 const {Car} = require('./car.js');
-const {Dealership} = require('./dealership.js');
 
-describe('Testing method calls.', () => {
-    let dealership;
+describe('Testing car method calls.', () => {
     let car1;
     let car2;
     let car3;
@@ -10,7 +8,6 @@ describe('Testing method calls.', () => {
     let car5;
     let car6;
     beforeEach(() => {
-        dealership = new Dealership(`Joao's Motors`, 50);
         car1 = new Car('Lamborghini', 500000, 'V12');
         car2 = new Car('Ferrari', 500000, 'V12');
         car3 = new Car('Aston Martin', 400000, 'V10');

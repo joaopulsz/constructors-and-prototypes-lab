@@ -13,9 +13,21 @@ class Dealership {
         this.setStock = (stock) => _stock = stock;
 
         this.getStockCount = () => _stock.length;
-        this.addCarToStock = (car) => _stock.push(car);
+        this.addCarToStock = (car) => {
+            if (_stock.length < _capacity) {
+                _stock.push(car);
+            }
+        }
         this.getManufacturers = () => _stock.map(getManufacturer());
-        this.getCarsByManufacturer = (manufacturer) => _stock.filter(car => car.getManufacturer() === manufacturer);
+        this.getCarsByCharacteristic = (characteristic, value) => {
+            if (characteristic.toLowerCase() === 'manufacturer') {
+                return _stock.filter(car => car.getManufacturer() === value);
+            } else if (characteristic.toLowerCase() === 'engine') {
+                return _stock.filter(car => car.getEngine() === value);
+            } else if (characteristic.toLowerCase() === 'price') {
+                return _stock.filter(car => car.getPrice() === value);
+            }
+        };
         this.getTotalStockValue = () => _stock.reduce((acc, car) => acc += car.getPrice(), 0);
     }
 }
