@@ -17,14 +17,14 @@ beforeEach(() => {
 
 test('Can buy car', () => {
     customer.buyCar(dealership, car1);
-    expect(customer.getCar()).toBe(car1);
-    expect(customer.getWallet()).toBe(70000);
+    expect(customer.car).toBe(car1);
+    expect(customer.wallet).toBe(70000);
     expect(dealership.getStock().length).toBe(1);
 })
 
 test('Cannot buy car', () => {
     customer.buyCar(dealership, car2);
-    expect(customer.getCar()).toBe(null);
-    expect(customer.getWallet()).toBe(100000);
+    expect(customer.car).toBe(null);
+    expect(customer.wallet).toBe(100000);
     expect(dealership.getStock().length).toBe(2);
 })
